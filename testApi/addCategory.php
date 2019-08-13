@@ -1,11 +1,6 @@
 <?php
-  session_start();
-  header('Access-Control-Allow-Origin:*');
-  header('Content-Type:application/json');
-
-  $user = $_SESSION['user'];
-
-  if($user === 'admin'){
+    require 'common.php';
+    
     $data = json_decode(file_get_contents("php://input"));
 
     $cname = $data->cname;
@@ -18,13 +13,6 @@
           {"cname":"'.$cname.'","type":"'.$type.'"}
         ]
       }';
-  } else {
-    $res = '{
-        "message":"Unknown user",
-        "success": true
-      }';
-  }
   sleep(2);
   echo($res);
-
  ?>

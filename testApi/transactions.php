@@ -1,11 +1,5 @@
 <?php
-  session_start();
-  header('Access-Control-Allow-Origin:*');
-  header('Content-Type:application/json');
-
-  $user = $_SESSION['user'];
-
-  if($user === 'admin'){
+  require 'common.php';
 
     $res = '{
         "message":"Transaction data.",
@@ -45,12 +39,7 @@
             }
         ]
       }';
-  } else {
-    $res = '{
-        "message":"Unknown user",
-        "success": true
-      }';
-  }
+
   //sleep(2);
   echo($res);
 
