@@ -3,32 +3,22 @@
 
     $data = json_decode(file_get_contents("php://input"));
 
-    // $cname = $data->cname;
-    // $type = $data->type;
-
-    // $temp = [
-    //     {cname: "1", type: "i"},
-    //     {cname: "2", type: "2"},
-    //     {cname: "3", type: "i"},
-    // ];
-    //
-    // print_r($temp);
-
-    echo(gettype($data));
-
-    $str = "";
+    $newCategoryArray = array();
 
     foreach ($data as $key => $value) {
-        echo($value->cname.' '.$value->type);
+        $obj = new stdClass;
+        $obj->cname = $value->cname;
+        $obj->type = $value->type;
+        array_push($newCategoryArray, $obj);
     }
+
+    $myJSON = json_encode($newCategoryArray);
 
     $res = '{
         "message":"Categories added successfuly",
         "success": true,
-        "response": [
-          {"cname":"","type":""}
-        ]
+        "response":'.$myJSON.'
       }';
   sleep(2);
-  echo($str);
+  echo($res);
  ?>
