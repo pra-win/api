@@ -11,7 +11,8 @@
                 "ctype":"e",
                 "tranDesc":"dmart",
                 "tranDate":"01-08-2019",
-                "amt":3000
+                "amt":3000,
+                "keyWords": "test, test2, test3"
             },
             {
                 "id":2,
