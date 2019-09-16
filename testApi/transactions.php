@@ -20,7 +20,8 @@
                 "ctype":"i",
                 "tranDesc":"july salary",
                 "tranDate":"05-08-2019",
-                "amt":50000
+                "amt":50000,
+                "keyWords": "test, filter1"
             },
             {
                 "id":3,
@@ -28,7 +29,8 @@
                 "ctype":"e",
                 "tranDesc":"pulser",
                 "tranDate":"06-08-2019",
-                "amt":300
+                "amt":300,
+                "keyWords": "test2, filter2"
             },
             {
                 "id":4,
@@ -36,7 +38,8 @@
                 "ctype":"e",
                 "tranDesc":"Doctor",
                 "tranDate":"08-08-2019",
-                "amt":1000
+                "amt":1000,
+                "keyWords": "filter3"
             }
         ]
       }';
