@@ -14,9 +14,6 @@ if($user === 'admin'){
     }');
 }
 
-print_r($_POST);
-print_r($_FILES); exit;
-
 header('Content-Type: application/json; charset=utf-8');
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: PUT, GET, POST");
@@ -24,9 +21,12 @@ $response = array();
 $upload_dir = '/';
 $server_url = 'http://localhost:80';
 
-$data = file_get_contents("php://input");
-print_r($data);
-echo("avtar=".$_FILES['avatar']);
+$data = file_get_contents("php://input", false);
+//print_r($data);
+echo ('test'.file_put_contents("outputfile.txt", file_get_contents("php://input")));
+
+exit;
+
 if($_FILES['avatar'])
 {
     $avatar_name = $_FILES["avatar"]["name"];
