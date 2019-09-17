@@ -1,7 +1,7 @@
 <?php
     require 'common.php';
 
-    $data = json_decode(file_get_contents("php://input"));
+    $data = json_decode($_POST['data']);
 
     $newCategoryArray = array();
 
