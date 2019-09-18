@@ -1,31 +1,32 @@
 <?php
 
 session_start();
+require 'common.php';
 
-$user = $_SESSION['user'];
-
-if($user === 'admin'){
-  header('Is-Logged-In:true');
-} else {
-  header('Is-Logged-In:false');
-  exit('{
-      "message":"Unknown user",
-      "success": true
-    }');
-}
-
-header('Content-Type: application/json; charset=utf-8');
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: PUT, GET, POST");
+// $user = $_SESSION['user'];
+//
+// if($user === 'admin'){
+//   header('Is-Logged-In:true');
+// } else {
+//   header('Is-Logged-In:false');
+//   exit('{
+//       "message":"Unknown user",
+//       "success": true
+//     }');
+// }
+//
+// header('Content-Type: application/json; charset=utf-8');
+// header("Access-Control-Allow-Origin: *");
+// header("Access-Control-Allow-Methods: PUT, GET, POST");
 $response = array();
-$upload_dir = '/';
+$upload_dir = '/home/pravin/www/html/api/testApi/uploads/';
 $server_url = 'http://localhost:80';
 
 $data = file_get_contents("php://input", false);
 //print_r($data);
-echo ('test'.file_put_contents("outputfile.txt", file_get_contents("php://input")));
-
-exit;
+echo ('test'.file_put_contents("outputfile.txt", "test"));
+//
+// exit;
 
 if($_FILES['avatar'])
 {
