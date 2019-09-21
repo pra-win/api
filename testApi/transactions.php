@@ -1,50 +1,39 @@
 <?php
   require 'common.php';
+  require 'db-connection.php';
 
-    $res = '{
-        "message":"Transaction data.",
-        "success": true,
-        "response": [
-            {
-                "id":1,
-                "cname":"Shopping",
-                "ctype":"e",
-                "tranDesc":"dmart",
-                "tranDate":"01-08-2019",
-                "amt":3000,
-                "keyWords": "test, test2, test3"
-            },
-            {
-                "id":2,
-                "cname":"Salary",
-                "ctype":"i",
-                "tranDesc":"july salary",
-                "tranDate":"05-08-2019",
-                "amt":50000,
-                "keyWords": "test, filter1"
-            },
-            {
-                "id":3,
-                "cname":"Fule",
-                "ctype":"e",
-                "tranDesc":"pulser",
-                "tranDate":"06-08-2019",
-                "amt":300,
-                "keyWords": "test2, filter2"
-            },
-            {
-                "id":4,
-                "cname":"Cat",
-                "ctype":"e",
-                "tranDesc":"Doctor",
-                "tranDate":"08-08-2019",
-                "amt":1000,
-                "keyWords": "filter3"
-            }
-        ]
-      }';
+  $sql = "SELECT `transaction-id`, `transaction-amt`, `category-id`, `transaction-date`, `transaction-desc`, `transaction-keyword`
+          FROM `transaction`";
 
+  $result = $conn->query($sql);
+  $newCategoryArray = array();
+
+  if ($result->num_rows > 0) {
+      while($row = $result->fetch_assoc()) {
+
+          $q = "SELECT `category-name`, `category-type` FROM `category-master` WHERE `category-id` = ".$row['category-id'];
+          $r = $conn->query($q);
+          $rw = $r->fetch_assoc();
+
+          $obj = new stdClass;
+          $obj->id = $row["transaction-id"];
+          $obj->cname = $rw['category-name'];
+          $obj->ctype = $rw['category-type'];
+          $obj->tranDesc = $row["category-added-date"];
+          $obj->tranDate = $row["transaction-date"];
+          $obj->amt = $row["transaction-amt"];
+          $obj->keyWords = $row["transaction-keyword"];
+          array_push($newCategoryArray, $obj);
+      }
+  }
+
+  $conn->close();
+  $myJSON = json_encode($newCategoryArray);
+  $res = '{
+      "message":"Transaction Data",
+      "success": true,
+      "response":'.$myJSON.'
+    }';
   //sleep(2);
   echo($res);
-
  ?>

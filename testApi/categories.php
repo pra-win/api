@@ -20,12 +20,12 @@
   }
 
   $conn->close();
-    $myJSON = json_encode($newCategoryArray);
-    $res = '{
-        "message":"Categories Data",
-        "success": true,
-        "response":'.$myJSON.'
-      }';
+  $myJSON = json_encode($newCategoryArray);
+  $res = '{
+      "message":"Categories Data",
+      "success": true,
+      "response":'.$myJSON.'
+    }';
   //sleep(2);
   echo($res);
  ?>
