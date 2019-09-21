@@ -13,7 +13,7 @@
         $obj->cname = $value->cname;
         $obj->type = $value->type;
 
-        $sql = "INSERT INTO `category-manager`(`category-name`, `category-type`, `category-added-date`)
+        $sql = "INSERT INTO `category-master`(`category-name`, `category-type`, `category-added-date`)
                 VALUES ('".$obj->cname."','".$obj->type."','". date('Y-m-d h:i:s') ."')";
 
         if ($conn->query($sql) === TRUE) {

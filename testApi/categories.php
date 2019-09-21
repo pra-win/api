@@ -1,21 +1,31 @@
 <?php
-
   require 'common.php';
+  require 'db-connection.php';
 
+  $sql = "select * from `category-master`";
+
+  $result = $conn->query($sql);
+  $newCategoryArray = array();
+
+  if ($result->num_rows > 0) {
+      // output data of each row
+      while($row = $result->fetch_assoc()) {
+          $obj = new stdClass;
+          $obj->cid = $row["category-id"];
+          $obj->cname = $row["category-name"];
+          $obj->type = $row["category-type"];
+          $obj->addedDate = $row["category-added-date"];
+          array_push($newCategoryArray, $obj);
+      }
+  }
+
+  $conn->close();
+    $myJSON = json_encode($newCategoryArray);
     $res = '{
         "message":"Categories Data",
         "success": true,
-        "response": [
-          {"cid":1, "cname":"Shopping","type":"e"},
-          {"cid":2, "cname":"Clothes","type":"e"},
-          {"cid":3, "cname":"Eating Out","type":"e"},
-          {"cid":4, "cname":"Gifts","type":"e"},
-          {"cid":5, "cname":"Genral","type":"e"},
-          {"cid":6, "cname":"Fuel","type":"e"},
-          {"cid":7, "cname":"Salary","type":"i"}
-        ]
+        "response":'.$myJSON.'
       }';
-  sleep(2);
+  //sleep(2);
   echo($res);
-
  ?>
