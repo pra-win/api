@@ -19,7 +19,7 @@
           $obj->id = $row["transaction-id"];
           $obj->cname = $rw['category-name'];
           $obj->ctype = $rw['category-type'];
-          $obj->tranDesc = $row["category-added-date"];
+          $obj->tranDesc = $row["transaction-desc"];
           $obj->tranDate = $row["transaction-date"];
           $obj->amt = $row["transaction-amt"];
           $obj->keyWords = $row["transaction-keyword"];
