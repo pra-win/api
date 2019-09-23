@@ -3,7 +3,7 @@ require 'common.php';
 require 'db-connection.php';
 
 $response = array();
-$upload_dir = '/home/pravin/www/html/api/testApi/uploads/';
+$upload_dir = './uploads/';
 $server_url = 'http://localhost:80';
 
 if($_FILES['file'])
@@ -53,6 +53,7 @@ if($_FILES['file'])
                 }
                 array_push($transactionsArray, $obj);
               }
+              $cnt = 0;
               foreach($categoryArray as $key=>$value) {
                 $cType = 'a';
                 if($value->catType === 'income') {
