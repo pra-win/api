@@ -8,14 +8,16 @@
 
     foreach ($data as $key => $value) {
         $obj = new stdClass;
-        $obj->amt = $value->amt;
+        $obj->amt = number_format($value->amt, 2);
         $obj->category = $value->category;
-        $obj->tranDate = $value->tranDate;
+
+        $tDate = new DateTime($value->tranDate);
+        $obj->tranDate = $tDate->format('Y-m-d H:i:s');
         $obj->tranDesc = $value->tranDesc;
         $obj->keyWords = $value->keyWords;
 
         $sql = "INSERT INTO `transaction`(`transaction-amt`, `category-id`, `transaction-date`, `transaction-desc`, `transaction-keyword`)
-                VALUES ($value->amt,$value->category,'".date("Y-m-d h:i:s", $value->tranDate)."','".$value->tranDesc."','".$value->keyWords."')";
+                VALUES ($obj->amt, $obj->category,'".$obj->tranDate."','".$obj->tranDesc."','".$obj->keyWords."')";
 
         if ($conn->query($sql) === TRUE) {
             $obj->cid = $conn->insert_id;
