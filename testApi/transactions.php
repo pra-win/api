@@ -2,24 +2,25 @@
   require 'common.php';
   require 'db-connection.php';
 
+  // $sql = "SELECT `transaction-id`, `transaction-amt`, `category-id`, `transaction-date`, `transaction-desc`, `transaction-keyword`
+  //         FROM `transaction`";
+  //
+  // $data = new stdClass;
+  // if(isset($_POST["data"])) {
+  //   $data =  json_decode($_POST["data"]);
+  //   $startIndex = $data->startItem;
+  //   $endIndex = $data->endItem;
+  //   if($endIndex == 0){
+  //     $endIndex = 10;
+  //   }
+  //   if($data) {
+  //     $sql = "SELECT `transaction-id`, `transaction-amt`, `category-id`, `transaction-date`, `transaction-desc`, `transaction-keyword`
+  //             FROM `transaction` ORDER BY `transaction-date` DESC LIMIT $data->startItem,$data->endItem";
+  //   }
+  // }
+
   $sql = "SELECT `transaction-id`, `transaction-amt`, `category-id`, `transaction-date`, `transaction-desc`, `transaction-keyword`
           FROM `transaction`";
-
-  $data = new stdClass;
-  if(isset($_POST["data"])) {
-    $data =  json_decode($_POST["data"]);
-    $startIndex = $data->startItem;
-    $endIndex = $data->endItem;
-    if($endIndex == 0){
-      $endIndex = 10;
-    }
-    if($data) {
-      $sql = "SELECT `transaction-id`, `transaction-amt`, `category-id`, `transaction-date`, `transaction-desc`, `transaction-keyword`
-              FROM `transaction` ORDER BY `transaction-date` DESC LIMIT $data->startItem,$data->endItem";
-    }
-  }
-
-
 
   //"SELECT * FROM `transaction` ORDER BY `transaction-id` DESC LIMIT 40,50;"
 

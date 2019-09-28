@@ -23,7 +23,7 @@ if($_FILES['file'])
         $upload_name = $upload_dir.strtolower($random_name);
         $upload_name = preg_replace('/\s+/', '-', $upload_name);
 
-        $filePath = "uploads/".$random_name;
+        $filePath = "./uploads/".$random_name;
         if(move_uploaded_file($file_tmp_name , $upload_name)) {
 
           $deleteTran = "DELETE FROM `transaction`";
