@@ -14,7 +14,7 @@ README.md
 browserslist
 e2e/
 package-lock.json
-uploads
+/uploads/*
 
 
 # profiling files
