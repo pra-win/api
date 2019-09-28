@@ -9,7 +9,7 @@
     $cnt = 0;
     foreach ($data as $key => $value) {
         $obj = new stdClass;
-        $obj->amt = number_format($value->amt, 2);
+        $obj->amt = number_format($value->amt, 2, '.', '');
         $obj->category = $value->category;
 
         $tDate = new DateTime($value->tranDate);
