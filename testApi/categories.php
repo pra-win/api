@@ -2,7 +2,13 @@
   require 'common.php';
   require 'db-connection.php';
 
+  $cid = "";
   $sql = "select * from `category-master`";
+
+  if(isset($_GET['cid']) && $_GET['cid'] != 'null') {
+    $cid = number_format($_GET['cid']);
+    $sql = "SELECT `category-id`, `category-name`, `category-type` FROM `category-master` WHERE `category-id` = ".$cid;
+  }
 
   $result = $conn->query($sql);
   $newCategoryArray = array();
