@@ -2,7 +2,6 @@
   session_start();
   header('Access-Control-Allow-Origin:*');
   header('Content-Type:application/json');
-  sleep(1);
   $res = "";
 
   $data = json_decode(file_get_contents("php://input"));

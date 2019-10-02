@@ -46,7 +46,5 @@
           "response":'.$myJSON.'
         }';
     }
-
-  sleep(2);
   echo($res);
  ?>

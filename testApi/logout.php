@@ -5,8 +5,6 @@
 
   session_destroy();
 
-  sleep(5);
-
   $res = '{
       "message":"Loged out",
       "success": true
