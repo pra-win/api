@@ -11,13 +11,20 @@
     $toDate = new DateTime($data[0]->toDate);
     $toDate = $toDate->format('Y-m-d');
 
+    $id = $data[0]->id;
+
     $sql = "SELECT `transaction-id`, `transaction-amt`, `category-id`, `transaction-date`, `transaction-desc`, `transaction-keyword`
     FROM `transaction`";
 
     if($fromDate && $toDate) {
-      $sql = "SELECT `transaction-id`, `transaction-amt`, `category-id`, `transaction-date`, `transaction-desc`, `transaction-keyword` 
-              FROM `transaction` WHERE `transaction-date` 
+      $sql = "SELECT `transaction-id`, `transaction-amt`, `category-id`, `transaction-date`, `transaction-desc`, `transaction-keyword`
+              FROM `transaction` WHERE `transaction-date`
               BETWEEN '".$fromDate."' AND '".$toDate."'";
+    }
+
+    if($id) {
+      $sql = "SELECT `transaction-id`, `transaction-amt`, `category-id`, `transaction-date`, `transaction-desc`, `transaction-keyword`
+              FROM `transaction` WHERE `transaction-id` = ".$id."";
     }
   }
 
