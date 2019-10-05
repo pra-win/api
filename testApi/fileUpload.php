@@ -46,6 +46,7 @@ if($_FILES['file'])
                 $obj->traAmt = $emapData[3];
                 $obj->traDate = $emapData[4];
                 $obj->traDesc = strval($emapData[5]);
+                $obj->keyWords = strval($emapData[6]);
 
                 if( !in_array( $obj->catName, $exists_array ) && $obj->catName !== "categoryName") {
                     $exists_array[] = $obj->catName;
@@ -63,7 +64,7 @@ if($_FILES['file'])
                 }
 
                 $addCat = "INSERT INTO `category-master`(`category-name`, `category-type`, `category-added-date`)
-                           VALUES ('".$value->catName."','".$cType."','". date('Y-m-d h:i:s') ."')";
+                           VALUES ('".$value->catName."','".$value->catType."','". date('Y-m-d h:i:s') ."')";
 
                  if ($conn->query($addCat) === TRUE) {
                      $obj->cid = $conn->insert_id;
@@ -79,7 +80,7 @@ if($_FILES['file'])
                 $traAmt = $value->traAmt;
                 $traDate = $value->traDate;
                 $traDesc = $value->traDesc;
-                $keyWords = "NA";
+                $keyWords = $value->keyWords;
 
                 $tranQ = "INSERT INTO `transaction`(`transaction-amt`, `category-id`, `transaction-date`, `transaction-desc`, `transaction-keyword`)
                         VALUES ($traAmt,$cId,'".$traDate."','".$traDesc."','".$keyWords."')";
