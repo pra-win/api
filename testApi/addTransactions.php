@@ -16,9 +16,10 @@
         $obj->tranDate = $tDate->format('Y-m-d H:i:s');
         $obj->tranDesc = $value->tranDesc;
         $obj->keyWords = $value->keyWords;
+        $obj->futureTransaction = $value->futureTransaction ? $value->futureTransaction : 0;
 
-        $sql = "INSERT INTO `transaction`(`transaction-amt`, `category-id`, `transaction-date`, `transaction-desc`, `transaction-keyword`)
-                VALUES ($obj->amt, $obj->category,'".$obj->tranDate."','".$obj->tranDesc."','".$obj->keyWords."')";
+        $sql = "INSERT INTO `transaction`(`transaction-amt`, `category-id`, `transaction-date`, `transaction-desc`, `transaction-keyword`, `future-transaction`)
+                VALUES ($obj->amt, $obj->category,'".$obj->tranDate."','".$obj->tranDesc."','".$obj->keyWords."',$obj->futureTransaction)";
 
         if ($conn->query($sql) === TRUE) {
             $obj->cid = $conn->insert_id;

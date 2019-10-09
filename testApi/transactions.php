@@ -13,17 +13,17 @@
 
     $id = $data[0]->id;
 
-    $sql = "SELECT `transaction-id`, `transaction-amt`, `category-id`, `transaction-date`, `transaction-desc`, `transaction-keyword`
+    $sql = "SELECT `transaction-id`, `transaction-amt`, `category-id`, `transaction-date`, `transaction-desc`, `transaction-keyword`, `future-transaction`
     FROM `transaction`";
 
     if($fromDate && $toDate) {
-      $sql = "SELECT `transaction-id`, `transaction-amt`, `category-id`, `transaction-date`, `transaction-desc`, `transaction-keyword`
+      $sql = "SELECT `transaction-id`, `transaction-amt`, `category-id`, `transaction-date`, `transaction-desc`, `transaction-keyword`, `future-transaction`
               FROM `transaction` WHERE `transaction-date`
               BETWEEN '".$fromDate."' AND '".$toDate."'";
     }
 
     if($id) {
-      $sql = "SELECT `transaction-id`, `transaction-amt`, `category-id`, `transaction-date`, `transaction-desc`, `transaction-keyword`
+      $sql = "SELECT `transaction-id`, `transaction-amt`, `category-id`, `transaction-date`, `transaction-desc`, `transaction-keyword`, `future-transaction`
               FROM `transaction` WHERE `transaction-id` = ".$id."";
     }
   }
@@ -46,6 +46,7 @@
           $obj->tranDate = $row["transaction-date"];
           $obj->amt = $row["transaction-amt"];
           $obj->keyWords = $row["transaction-keyword"];
+          $obj->futureTransaction = $row["future-transaction"];
           array_push($newCategoryArray, $obj);
       }
   }
