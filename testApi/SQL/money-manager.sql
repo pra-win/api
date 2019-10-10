@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 05, 2019 at 08:39 PM
+-- Generation Time: Oct 10, 2019 at 06:34 AM
 -- Server version: 5.7.27-0ubuntu0.16.04.1
 -- PHP Version: 7.0.33-0ubuntu0.16.04.6
 
@@ -46,7 +46,7 @@ CREATE TABLE `transaction` (
   `transaction-date` datetime NOT NULL,
   `transaction-desc` varchar(1000) NOT NULL,
   `transaction-keyword` varchar(500) NOT NULL,
-  `future-transaction` tinyint(1) DEFAULT NULL
+  `future-transaction` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -75,12 +75,12 @@ ALTER TABLE `transaction`
 -- AUTO_INCREMENT for table `category-master`
 --
 ALTER TABLE `category-master`
-  MODIFY `category-id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=279;
+  MODIFY `category-id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=296;
 --
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `transaction-id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=611;
+  MODIFY `transaction-id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=504;
 --
 -- Constraints for dumped tables
 --

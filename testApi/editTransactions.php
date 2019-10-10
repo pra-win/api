@@ -18,11 +18,13 @@
         $obj->tranDesc = $value->tranDesc;
         $obj->keyWords = $value->keyWords;
         $obj->id = $value->id;
+        $obj->futureTransaction = $value->futureTransaction == 'true' ? 1 : 0;
 
         $sql = "UPDATE `transaction`
                 SET `transaction-amt`= $obj->amt,
                     `category-id`= $obj->category,`transaction-date`= '$obj->tranDate',
-                    `transaction-desc`='$obj->tranDesc',`transaction-keyword`= '$obj->keyWords'
+                    `transaction-desc`='$obj->tranDesc',`transaction-keyword`= '$obj->keyWords',
+                    `future-transaction`= $obj->futureTransaction
                 WHERE `transaction-id` = ".$obj->id." ";
 
         if ($conn->query($sql) === TRUE) {

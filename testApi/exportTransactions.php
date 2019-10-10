@@ -2,7 +2,7 @@
 require 'common.php';
 require 'db-connection.php';
 
-$select = "SELECT `transaction-id`,`category-name`,`category-type`, `transaction-amt`,  `transaction-date`, `transaction-desc`, `transaction-keyword`
+$select = "SELECT `transaction-id`,`category-name`,`category-type`, `transaction-amt`,  `transaction-date`, `transaction-desc`, `transaction-keyword`, `future-transaction`
           FROM `transaction`, `category-master`
           WHERE `transaction`.`category-id` = `category-master`.`category-id`;";
 

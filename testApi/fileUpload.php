@@ -47,6 +47,7 @@ if($_FILES['file'])
                 $obj->traDate = $emapData[4];
                 $obj->traDesc = strval($emapData[5]);
                 $obj->keyWords = strval($emapData[6]);
+                $obj->futureTransaction = $emapData[7];
 
                 if( !in_array( $obj->catName, $exists_array ) && $obj->catName !== "categoryName") {
                     $exists_array[] = $obj->catName;
@@ -81,9 +82,10 @@ if($_FILES['file'])
                 $traDate = $value->traDate;
                 $traDesc = $value->traDesc;
                 $keyWords = $value->keyWords;
+                $futureTransaction = $value->futureTransaction;
 
-                $tranQ = "INSERT INTO `transaction`(`transaction-amt`, `category-id`, `transaction-date`, `transaction-desc`, `transaction-keyword`)
-                        VALUES ($traAmt,$cId,'".$traDate."','".$traDesc."','".$keyWords."')";
+                $tranQ = "INSERT INTO `transaction`(`transaction-amt`, `category-id`, `transaction-date`, `transaction-desc`, `transaction-keyword`, `future-transaction`)
+                        VALUES ($traAmt,$cId,'".$traDate."','".$traDesc."','".$keyWords."',$futureTransaction)";
 
                 if ($conn->query($tranQ) === TRUE) {
                     $obj->cid = $conn->insert_id;
