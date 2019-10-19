@@ -41,10 +41,10 @@ if ( $data == "" )
     $data = "\n(0) Records Found!\n";
 }
 
-$fileName = "backup_".date('Y_m_d').".csv";
+$fileName = "backup_".date('Y_m_d');
 
 header("Content-type: application/octet-stream");
-header("Content-Disposition: attachment; filename=".$fileName."");
+header("Content-Disposition: attachment; filename=".$fileName.".csv");
 header("Pragma: no-cache");
 header("Expires: 0");
 print "$header\n$data";
