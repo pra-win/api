@@ -18,7 +18,7 @@
         $obj->tranDesc = $value->tranDesc;
         $obj->keyWords = $value->keyWords;
         $obj->id = $value->id;
-        $obj->futureTransaction = $value->futureTransaction == 'true' ? 1 : 0;
+        $obj->futureTransaction = $value->futureTransaction;
 
         $sql = "UPDATE `transaction`
                 SET `transaction-amt`= $obj->amt,
